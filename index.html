@@ -1,0 +1,1636 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bruno Pixels — Software & AI Integration</title>
+  <meta name="description" content="Bruno Pixels — Production-grade software, AI integrations, automation, and web apps. Based in Kigali, Rwanda.">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%230b66ff%22/></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg-100: #fafbfd;
+      --bg-200: #f0f4f9;
+      --white: #ffffff;
+      --muted: #64748b;
+      --text: #0f172a;
+      --accent: #0b66ff;
+      --accent-hover: #0052cc;
+      --accent-light: #e6f0ff;
+      --glass: rgba(255,255,255,0.85);
+      --shadow-sm: 0 2px 8px rgba(15,23,42,0.04);
+      --shadow-md: 0 8px 24px rgba(15,23,42,0.06);
+      --shadow-lg: 0 20px 48px rgba(15,23,42,0.08);
+      --shadow-accent: 0 8px 28px rgba(11,102,255,0.18);
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 20px;
+      --max-width: 1200px;
+      --transition: 280ms cubic-bezier(0.4,0,0.2,1);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Inter,system-ui,-apple-system,sans-serif;
+      background:linear-gradient(180deg,var(--bg-100) 0%,var(--white) 100%);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      line-height:1.6;
+      font-size:16px;
+    }
+
+    /* Container */
+    .container{
+      width:min(var(--max-width),calc(100% - 48px));
+      margin:0 auto;
+      padding:0 24px;
+      margin-top: 40px;
+      margin-bottom: 0px;
+    }
+
+    /* Header - Refined sticky nav */
+    .site-header{
+      position:sticky;
+      top:16px;
+      z-index:100;
+      margin:16px 0 0;
+    }
+    .nav-wrapper{
+      background:var(--glass);
+      backdrop-filter:blur(12px);
+      border-radius:var(--radius-lg);
+      box-shadow:var(--shadow-md);
+      border:1px solid rgba(255,255,255,0.8);
+      padding:12px 24px;
+    }
+    .nav-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-decoration:none;
+      color:inherit;
+    }
+    .logo img {
+  width: 60px; /* adjust as needed */
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+    .brand:hover .logo{transform:scale(1.05)}
+    .brand-title h1{
+      font-size:18px;
+      font-weight:700;
+      margin:0;
+      letter-spacing:-0.02em;
+    }
+    .brand-title p{
+      font-size:13px;
+      color:var(--muted);
+      margin:2px 0 0;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:8px;
+      align-items:center;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 18px;
+      border-radius:var(--radius-md);
+      text-decoration:none;
+      font-weight:600;
+      font-size:14px;
+      transition:all var(--transition);
+      border:none;
+      cursor:pointer;
+      white-space:nowrap;
+    }
+    .btn-ghost{
+      background:transparent;
+      color:var(--text);
+    }
+    .btn-ghost:hover{
+      background:var(--bg-200);
+    }
+    .btn-primary{
+      background:linear-gradient(135deg,var(--accent) 0%,#0052cc 100%);
+      color:white;
+      box-shadow:var(--shadow-accent);
+    }
+    .btn-primary:hover{
+      transform:translateY(-2px);
+      box-shadow:0 12px 36px rgba(11,102,255,0.24);
+    }
+
+    /* Hero - Improved spacing and hierarchy */
+    .hero{
+      display:grid;
+      grid-template-columns:1.2fr 420px;
+      gap:48px;
+      align-items:start;
+      padding:80px 0 60px;
+      margin-top: -70px;
+      margin-bottom: -100px;
+    }
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-weight:600;
+      font-size:13px;
+      color:var(--accent);
+      background:var(--accent-light);
+      padding:6px 14px;
+      border-radius:999px;
+      margin-bottom:24px;
+    }
+    .hero-title{
+      font-size:56px;
+      line-height:1.1;
+      margin:0 0 20px;
+      letter-spacing:-0.03em;
+      font-weight:800;
+      background:linear-gradient(135deg,var(--text) 0%,var(--muted) 100%);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
+
+    .hero-title-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 260px; /* Reserve full space for 3 lines */
+  overflow: hidden;
+  text-align: center;
+}
+
+.hero-title {
+  margin: 0;
+  padding: 0;
+  line-height: 1.3;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* Each line gets its own height reservation */
+.hero-title .line {
+  display: block;
+  height: 80px; /* consistent height per line */
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+}
+
+/* Optional typing animation for each line */
+.hero-title .line::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.75);
+  animation: blink 0.8s step-end infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+    .hero-title .accent{
+      background:linear-gradient(135deg,var(--accent) 0%,#0052cc 100%);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
+
+    /* Mobile */
+@media (max-width:640px){
+  .hero-title{
+    min-height:140px;
+    max-height:140px;
+    padding:16px 18px;
+    font-size:28px;
+    line-height:1.3;
+  }
+
+  .hero-title #typed{
+    min-width:150px;
+  }
+}
+
+/* Small mobile */
+@media (max-width:480px){
+  .hero-title{
+    min-height:120px;
+    max-height:120px;
+    padding:14px 16px;
+    font-size:24px;
+    line-height:1.25;
+    border-radius:var(--radius-md);
+  }
+
+  .hero-title #typed{
+    min-width:120px;
+  }
+}
+
+/* Very small screens */
+@media (max-width:360px){
+  .hero-title{
+    min-height:110px;
+    max-height:110px;
+    padding:12px 14px;
+    font-size:22px;
+  }
+
+  .hero-title #typed{
+    min-width:100px;
+  }
+}
+    .hero-subtitle{
+      font-size:20px;
+      color:var(--muted);
+      font-weight:500;
+      margin-bottom:80px;
+      margin-top: 50px;
+    }
+  @media (max-width:768px){
+    .hero-subtitle{
+      margin-top:80px;
+    }
+  }
+
+    .lead{
+      font-size:13px;
+      line-height:1.7;
+      color:var(--muted);
+      max-width:60ch;
+      margin-bottom:32px;
+    }
+    .cta-row{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      margin-bottom:48px;
+    }
+
+    /* Profile Card - More refined */
+    .profile-card{
+      background:white;
+      border-radius:var(--radius-xl);
+      padding:28px;
+      box-shadow:var(--shadow-lg);
+      border:1px solid rgba(15,23,42,0.04);
+      position:sticky;
+      top:120px;
+    }
+    .profile-header{
+      display:flex;
+      gap:16px;
+      align-items:flex-start;
+      margin-bottom:24px;
+      padding-bottom:24px;
+      border-bottom:1px solid var(--bg-200);
+    }
+    .avatar{
+      width:64px;
+      height:64px;
+      border-radius:var(--radius-md);
+      background:linear-gradient(135deg,var(--accent) 0%,#0052cc 100%);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      font-weight:800;
+      font-size:24px;
+      box-shadow:var(--shadow-accent);
+      flex-shrink:0;
+    }
+    .profile-info h3{
+      font-size:18px;
+      font-weight:700;
+      margin-bottom:4px;
+    }
+    .profile-info p{
+      font-size:14px;
+      color:var(--muted);
+      margin-bottom:8px;
+    }
+    .status-badge{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      font-size:12px;
+      color:#10b981;
+      background:#ecfdf5;
+      padding:4px 10px;
+      border-radius:999px;
+      font-weight:600;
+    }
+    .status-badge::before{
+      content:'';
+      width:6px;
+      height:6px;
+      background:#10b981;
+      border-radius:50%;
+      animation:pulse 2s infinite;
+    }
+    @keyframes pulse{
+      0%,100%{opacity:1}
+      50%{opacity:0.4}
+    }
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+      margin-bottom:10px;
+    }
+    .stat{
+      text-align:center;
+      padding:12px;
+      background:var(--bg-100);
+      border-radius:var(--radius-md);
+    }
+    .stat-value{
+      display:block;
+      font-size:24px;
+      font-weight:800;
+      color:var(--accent);
+      line-height:1;
+      margin-bottom:4px;
+    }
+    .stat-label{
+      font-size:12px;
+      color:var(--muted);
+      font-weight:500;
+    }
+
+    .tech-section{
+      margin-top:20px;
+      padding-top:20px;
+      border-top:1px solid var(--bg-200);
+    }
+    .tech-label{
+      font-size:12px;
+      font-weight:600;
+      color:var(--muted);
+      margin-bottom:10px;
+      text-transform:uppercase;
+      letter-spacing:0.05em;
+    }
+    .tech-tags{
+      display:flex;
+      gap:6px;
+      flex-wrap:wrap;
+    }
+    .tag{
+      padding:6px 12px;
+      background:var(--accent-light);
+      color:var(--accent);
+      border-radius:var(--radius-sm);
+      font-size:13px;
+      font-weight:600;
+    }
+
+    .team {
+  text-align: center;
+  padding: 80px 20px;
+  background-color: #f8f9fa;
+}
+
+.team-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 50px;
+  color: #003366; /* Deep blue for consistency */
+}
+
+.team-members {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.team-member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 160px;
+}
+
+.team-circle {
+  background-color:#0052cc;
+  color: white;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.4;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-circle:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 15px rgba(0, 123, 255, 0.4);
+}
+
+.member-name {
+  margin-top: 15px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #003366;
+}
+
+.member-exp {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+@media (max-width: 768px) {
+  .team-members {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .team-member {
+    width: 100%;
+  }
+}
+
+    /* Services - Better cards */
+    .services{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+      margin-top:0px;
+    }
+    .service-card{
+      background:white;
+      padding:28px;
+      border-radius:var(--radius-lg);
+      border:1px solid rgba(15,23,42,0.04);
+      box-shadow:var(--shadow-sm);
+      transition:all var(--transition);
+      cursor:pointer;
+    }
+    .service-card:hover{
+      transform:translateY(-4px);
+      box-shadow:var(--shadow-lg);
+      border-color:var(--accent-light);
+    }
+    .service-icon{
+      width:56px;
+      height:56px;
+      border-radius:var(--radius-md);
+      background:var(--accent-light);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:24px;
+      margin-bottom:16px;
+    }
+    .service-card h3{
+      font-size:18px;
+      font-weight:700;
+      margin-bottom:8px;
+    }
+    .service-card p{
+      font-size:14px;
+      color:var(--muted);
+      line-height:1.6;
+    }
+
+    /* Section headings */
+    .section{
+      margin-top:100px;
+    }
+    .section-header{
+      text-align:center;
+      margin-bottom:48px;
+    }
+    .section-title{
+      font-size:40px;
+      font-weight:800;
+      letter-spacing:-0.02em;
+      margin-bottom:12px;
+    }
+    .section-subtitle{
+      font-size:18px;
+      color:var(--muted);
+      max-width:60ch;
+      margin:0 auto;
+    }
+
+    /* Projects - Cleaner grid */
+    .projects{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:24px;
+      margin-top:1px;
+    }
+    .project-card{
+      background:white;
+      border-radius:var(--radius-lg);
+      overflow:hidden;
+      box-shadow:var(--shadow-sm);
+      border:1px solid rgba(15,23,42,0.04);
+      transition:all var(--transition);
+    }
+    .project-card:hover{
+      transform:translateY(-4px);
+      box-shadow:var(--shadow-lg);
+    }
+    .project-image{
+      width:100%;
+      height:200px;
+      object-fit:cover;
+      display:block;
+    }
+    .project-content{
+      padding:20px;
+    }
+    .project-content h4{
+      font-size:18px;
+      font-weight:700;
+      margin-bottom:8px;
+    }
+    .project-content p{
+      font-size:14px;
+      color:var(--muted);
+      margin-bottom:12px;
+      line-height:1.6;
+    }
+    .stack-tags{
+      display:flex;
+      gap:6px;
+      flex-wrap:wrap;
+    }
+    .stack-tag{
+      padding:4px 10px;
+      background:var(--bg-100);
+      border-radius:var(--radius-sm);
+      font-size:12px;
+      font-weight:600;
+      color:var(--muted);
+    }
+
+    /* Features - Two column layout */
+    .features-grid{
+      display:grid;
+      grid-template-columns:1fr 400px;
+      gap:48px;
+      align-items:start;
+    }
+    .feature-list{
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+    .feature-item{
+      background:white;
+      padding:24px;
+      border-radius:var(--radius-lg);
+      border:1px solid rgba(15,23,42,0.04);
+      box-shadow:var(--shadow-sm);
+      display:flex;
+      gap:16px;
+      align-items:flex-start;
+      transition:all var(--transition);
+    }
+    .feature-item:hover{
+      transform:translateX(4px);
+      box-shadow:var(--shadow-md);
+    }
+    .feature-icon{
+      width:48px;
+      height:48px;
+      border-radius:var(--radius-md);
+      background:linear-gradient(135deg,var(--accent) 0%,#0052cc 100%);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      font-size:20px;
+      flex-shrink:0;
+    }
+    .feature-item h4{
+      font-size:16px;
+      font-weight:700;
+      margin-bottom:6px;
+    }
+    .feature-item p{
+      font-size:14px;
+      color:var(--muted);
+      line-height:1.6;
+    }
+
+    .case-study{
+      background:linear-gradient(135deg,var(--accent-light) 0%,var(--bg-100) 100%);
+      padding:32px;
+      border-radius:var(--radius-lg);
+      position:sticky;
+      top:120px;
+    }
+    .case-study h3{
+      font-size:20px;
+      font-weight:700;
+      margin-bottom:12px;
+    }
+    .case-study p{
+      font-size:14px;
+      color:var(--muted);
+      line-height:1.6;
+      margin-bottom:16px;
+    }
+    .case-highlights{
+      margin-top:20px;
+    }
+    .case-highlights strong{
+      display:block;
+      font-size:14px;
+      font-weight:700;
+      margin-bottom:10px;
+    }
+    .case-highlights ul{
+      list-style:none;
+      padding:0;
+    }
+    .case-highlights li{
+      font-size:14px;
+      color:var(--muted);
+      padding-left:20px;
+      position:relative;
+      margin-bottom:8px;
+    }
+    .case-highlights li::before{
+      content:'✓';
+      position:absolute;
+      left:0;
+      color:var(--accent);
+      font-weight:700;
+    }
+
+    /* Testimonials */
+    .testimonials{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:24px;
+    }
+    .testimonial{
+      background:white;
+      padding:28px;
+      border-radius:var(--radius-lg);
+      box-shadow:var(--shadow-sm);
+      border:1px solid rgba(15,23,42,0.04);
+    }
+    .testimonial-header{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      margin-bottom:16px;
+    }
+    .testimonial .avatar{
+      width:48px;
+      height:48px;
+      font-size:16px;
+    }
+    .testimonial-author h5{
+      font-size:15px;
+      font-weight:700;
+      margin-bottom:2px;
+    }
+    .testimonial-author p{
+      font-size:13px;
+      color:var(--muted);
+    }
+    .testimonial-text{
+      font-size:14px;
+      color:var(--muted);
+      line-height:1.7;
+      font-style:italic;
+    }
+
+    /* Contact - Improved form */
+    .contact{
+      background:linear-gradient(135deg,var(--accent-light) 0%,white 100%);
+      padding:60px 48px;
+      border-radius:var(--radius-xl);
+      display:grid;
+      grid-template-columns:1fr 480px;
+      gap:48px;
+      align-items:start;
+    }
+    .contact-info h2{
+      font-size:36px;
+      font-weight:800;
+      margin-bottom:16px;
+    }
+    .contact-info p{
+      font-size:16px;
+      color:var(--muted);
+      margin-bottom:32px;
+      line-height:1.7;
+    }
+    .info-item{
+      margin-bottom:20px;
+    }
+    .info-item strong{
+      display:block;
+      font-size:14px;
+      font-weight:700;
+      margin-bottom:6px;
+    }
+    .info-item p{
+      font-size:14px;
+      color:var(--muted);
+      margin:0;
+    }
+    .info-item a{
+      color:var(--accent);
+      text-decoration:none;
+      font-weight:600;
+    }
+    .info-item a:hover{
+      text-decoration:underline;
+    }
+
+    .contact-form{
+      background:white;
+      padding:32px;
+      border-radius:var(--radius-lg);
+      box-shadow:var(--shadow-lg);
+    }
+    .form-group{
+      margin-bottom:20px;
+    }
+    .form-row{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+    }
+    label{
+      display:block;
+      font-size:14px;
+      font-weight:600;
+      margin-bottom:8px;
+      color:var(--text);
+    }
+    input,select,textarea{
+      width:100%;
+      padding:12px 16px;
+      border:1px solid var(--bg-200);
+      border-radius:var(--radius-md);
+      font-size:14px;
+      font-family:inherit;
+      transition:all var(--transition);
+      background:white;
+    }
+    input:focus,select:focus,textarea:focus{
+      outline:none;
+      border-color:var(--accent);
+      box-shadow:0 0 0 3px var(--accent-light);
+    }
+    textarea{
+      resize:vertical;
+      min-height:120px;
+    }
+    .form-status{
+      margin-top:12px;
+      font-size:14px;
+      color:var(--accent);
+    }
+
+    /* Footer */
+.footer {
+  text-align: center;
+  padding: 60px 20px 40px;
+  margin-top: 80px;
+  border-top: 1px solid var(--bg-200);
+  background: linear-gradient(180deg, var(--bg-100), var(--bg-200));
+  color: var(--muted);
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  align-items: start;
+  justify-content: center;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.footer-section h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: var(--text-primary);
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 8px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: var(--muted);
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: var(--accent);
+}
+
+.footer-logo {
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+}
+
+.footer-text {
+  font-size: 14px;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+.social-links a {
+      color: rgb(118, 118, 118);
+      font-size: 24px;
+      margin-right: 15px;
+      transition: color 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: #3842ff;
+    }
+
+/* Font Awesome */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css");
+
+
+    /* Animations */
+    [data-anim]{
+      opacity:0;
+      transform:translateY(24px);
+      transition:opacity 0.6s cubic-bezier(0.4,0,0.2,1),transform 0.6s cubic-bezier(0.4,0,0.2,1);
+    }
+    [data-anim].in{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width:1024px){
+      .hero{
+        grid-template-columns:1fr;
+        gap:40px;
+      }
+      .profile-card{
+        position:relative;
+        top:0;
+      }
+      .features-grid,.contact{
+        grid-template-columns:1fr;
+      }
+      .case-study{
+        position:relative;
+        top:0;
+      }
+    }
+
+    @media (max-width:768px){
+      .hero-title{font-size:40px}
+      .services,.projects,.testimonials{
+        grid-template-columns:1fr;
+      }
+      .nav-links{
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+      .section-title{font-size:32px}
+      .form-row{
+        grid-template-columns:1fr;
+      }
+      /* Navigation Section */
+  nav {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .logo {
+    order: 1;
+    margin-bottom: 10px;
+  }
+
+  nav h1 {
+    order: 2;
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+  }
+
+  nav p {
+    order: 3;
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+
+  nav ul {
+    order: 4;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav ul li {
+    list-style: none;
+  }
+
+  nav .contact-btn {
+    order: 5;
+    margin-top: 12px;
+  }
+    }
+
+    @media (max-width:640px){
+      .container{
+        width:calc(100% - 32px);
+        padding:0 16px;
+      }
+      .hero-title{font-size:32px}
+      .nav-wrapper{padding:12px 16px}
+      .btn{padding:10px 14px;font-size:13px}
+    }
+
+    /* Accessibility */
+    .btn:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{
+      outline:3px solid var(--accent);
+      outline-offset:2px;
+    }
+
+    @media (prefers-reduced-motion:reduce){
+      *{
+        animation-duration:0.01ms !important;
+        animation-iteration-count:1 !important;
+        transition-duration:0.01ms !important;
+      }
+    }
+
+    /* Widen Contact Form on Mobile */
+@media (max-width:1024px){
+  .contact{
+    grid-template-columns:1fr;
+    gap:32px;
+  }
+
+  .contact-form{
+    max-width:600px;
+    margin:0 auto;
+    width:100%;
+  }
+}
+
+/* Reduce Contact Form H2 Font Size on Mobile */
+@media (max-width:768px){
+  .contact-info h2{
+    font-size:28px;
+  }
+}
+
+@media (max-width:640px){
+  .contact-info h2{
+    font-size:24px;
+    margin-bottom:12px;
+  }
+}
+
+@media (max-width:480px){
+  .contact-info h2{
+    font-size:22px;
+    line-height:1.3;
+  }
+}
+
+@media (max-width:768px){
+  .contact{
+    padding:40px 16px; /* Reduced side padding */
+  }
+
+  .contact-form{
+    padding:28px 20px;
+    max-width:100%;
+    width:100%;
+  }
+
+  .form-row{
+    grid-template-columns:1fr;
+    gap:16px;
+  }
+}
+
+@media (max-width:640px){
+  .contact{
+    padding:30px 12px; /* Even less side padding */
+    border-radius:var(--radius-lg);
+  }
+
+  .contact-form{
+    padding:24px 16px;
+    box-shadow:var(--shadow-md);
+  }
+
+  /* Make inputs and buttons full width */
+  input,
+  select,
+  textarea,
+  .btn-primary{
+    width:100%;
+  }
+
+  /* Ensure form groups use full width */
+  .form-group{
+    width:100%;
+  }
+}
+
+@media (max-width:480px){
+  .contact{
+    padding:24px 8px;
+  }
+
+  .contact-form{
+    padding:20px 12px;
+  }
+}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="nav-wrapper">
+        <nav class="nav-inner">
+          <a class="brand" href="#" aria-label="Bruno Pixels homepage">
+            <div class="logo">
+              <img src="BPx logo no bg.png" alt="Bruno Pixels Logo">
+            </div>
+            <div class="brand-title">
+              <h1>Bruno Pixels Ltd</h1>
+              <p>Software Development • AI Integration</p>
+            </div>
+          </a>
+
+          <div class="nav-links">
+            <a class="btn btn-ghost" href="#services">Services</a>
+            <a class="btn btn-ghost" href="#projects">Works</a>
+            <a class="btn btn-ghost" href="#team">Team</a>
+            <a class="btn btn-ghost" href="#features">Expertise</a>
+            <a class="btn btn-ghost" href="#clients">Clients</a>
+            <a class="btn btn-primary" href="#contact">Let's talk</a>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div data-anim>
+        <div class="kicker">
+          🇷🇼 Rwandan & International
+        </div>
+        <h1 class="hero-title">
+          We build robust <span class="accent">software</span> and integrate <span class="accent" id="typed">AI for growth</span>
+        </h1>
+        <p class="hero-subtitle">Production-grade web apps, automation, and AI solutions</p>
+
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#contact">Get a proposal</a>
+          <a class="btn btn-ghost" href="#projects">View works</a>
+        </div>
+      </div>
+
+      <aside class="profile-card" data-anim>
+        <div class="profile-header">
+          <div class="avatar">BT</div>
+          <div class="profile-info">
+            <h3>Bruno Twagirumukiza</h3>
+            <p>Founder • Lead Engineer</p>
+            <span class="status-badge">Available for projects</span>
+          </div>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <span class="stat-value">3+</span>
+            <span class="stat-label">Years</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">25+</span>
+            <span class="stat-label">Projects</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">15+</span>
+            <span class="stat-label">Clients</span>
+          </div>
+        </div>
+
+        <div class="tech-section">
+          <div class="tech-label">Tech Stack</div>
+          <div class="tech-tags">
+            <div class="tag">React</div>
+            <div class="tag">Node.js</div>
+            <div class="tag">Python</div>
+            <div class="tag">Next.js</div>
+            <div class="tag">GraphQL</div>
+            <div class="tag">PostgreSQL</div>
+            <div class="tag">AWS</div>
+            <div class="tag">OAuth2</div>
+            <div class="tag">Figma</div>
+            <div class="tag">Google AI Studio</div>
+            <div class="tag">OpenAI</div>
+            <div class="tag">TensorFlow</div>
+            <div class="tag">...</div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="services" class="section">
+      <div class="section-header" data-anim>
+        <h2 class="section-title">Services we offer</h2>
+        <p class="section-subtitle">Building modern software solutions tailored to your business needs</p>
+      </div>
+      <div class="services" data-anim>
+        <div class="service-card">
+          <div class="service-icon">💻</div>
+          <h3>Web & Mobile App Development</h3>
+          <p>UI & UX Designs, Professional Websites, Mobile Applications, E-commerce Platforms, Organizations Systems Among others.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🤖</div>
+          <h3>AI Integration & APIs Development and Integration</h3>
+          <p>Chatbots, Systems automation, and Integrations with payments, SMS, analytics, and data orchestration.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">💡</div>
+          <h3>Technology Consulting</h3>
+          <p>Expert guidance for your business or organization's digital transformation on up to date Tech.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="section-header" data-anim>
+        <h2 class="section-title">Selected Projects</h2>
+        <p class="section-subtitle">Sample of Production-ready solutions deployed for real clients</p>
+      </div>
+
+      <div class="projects" data-anim>
+        <article class="project-card">
+          <img class="project-image" src="Screenshot.png" alt="Tazerwa e-market">
+          <div class="project-content">
+            <h4>Tazerwa e-market</h4>
+            <p>E-commerce website and online marketplace providing delivery services for a variety of products in Kigali.</p>
+            <div class="stack-tags">
+              <span class="stack-tag">React</span>
+              <span class="stack-tag">Html</span>
+              <span class="stack-tag">CSS</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <img class="project-image" src="chatbot.webp" alt="AI chatbot">
+          <div class="project-content">
+            <h4>AI Chatbots</h4>
+            <p>We integrated AI Customer supports & assistants using LLMs into numerous companies websites and systems; automated routing and knowledge base sync.</p>
+            <div class="stack-tags">
+              <span class="stack-tag">OpenAI</span>
+              <span class="stack-tag">Node</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <img class="project-image" src="inventory.webp" alt="Smart Inventory dashboard">
+          <div class="project-content">
+            <h4>Smart Inventory</h4>
+            <p>Inventory forecasting & dashboard for Kigali FreshCart hence reduced waste and optimized reorder.</p>
+            <div class="stack-tags">
+              <span class="stack-tag">React</span>
+              <span class="stack-tag">Python</span>
+              <span class="stack-tag">ML</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="team" class="team">
+      <div class="section-header" data-anim>
+        <h2 class="section-title">Our Team</h2>
+        <p class="section-subtitle">We bring together top-tier developers, designers, and AI experts to build software that transforms businesses and shapes the future.</p>
+      </div>
+  <div class="team-members" data-anim>
+    <div class="team-member">
+      <div class="team-circle">UI/UX<br>Designer</div>
+      <p class="member-exp">3+ years of experience</p>
+    </div>
+
+    <div class="team-member">
+      <div class="team-circle">Two Web<br>Developers</div>
+      <p class="member-exp">4+ years of experience</p>
+    </div>
+
+    <div class="team-member">
+      <div class="team-circle">AI<br>Automation<br>Dev</div>
+      <p class="member-exp">2+ years of experience</p>
+    </div>
+
+    <div class="team-member">
+      <div class="team-circle">Cybersecurity<br>& QA Tester</div>
+      <p class="member-exp">3+ years of experience</p>
+    </div>
+
+  </div>
+</section>
+
+    <section id="features" class="section">
+      <div class="section-header" data-anim>
+        <h2 class="section-title">Capabilities & Expertise</h2>
+        <p class="section-subtitle">We deliver production-ready solutions</p>
+      </div>
+
+      <div class="features-grid" data-anim>
+        <div class="feature-list">
+          
+          <div class="feature-item">
+            <div class="feature-icon">🚀</div>
+            <div>
+              <h4>Web & App Development</h4>
+              <p>From E-commerce websites, Landing pages, Organizational systems, Mobile Applications and many more. </p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-icon">⚙️</div>
+            <div>
+              <h4>Custom LLM Workflows</h4>
+              <p>Prompt engineering, retrieval-augmented generation (RAG), vector stores, and secure prompt execution.</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-icon">🔗</div>
+            <div>
+              <h4>Third-party Integrations</h4>
+              <p>Payments, SMS, inventory systems, analytics — resilient and observable integrations.</p>
+            </div>
+          </div>
+
+          <div class="feature-item">
+            <div class="feature-icon">🔒</div>
+            <div>
+              <h4>Security & Compliance</h4>
+              <p>Auth flows, secure tokens, encryption at rest and transit, and data governance advice.</p>
+            </div>
+          </div>
+        </div>
+
+        <aside class="case-study">
+          <h3>Featured: Kigali FreshCart Inventory</h3>
+          <p>Problem - Kigali FreshCart had high perishable waste and stockouts. Solution - we built a demand forecasting pipeline, integrated supplier APIs, and added a reorder engine that saved 18% in waste in three months.</p>
+          
+          <div class="case-highlights">
+            <strong>Key Results</strong>
+            <ul>
+              <li>Accurate short-term demand forecasts</li>
+              <li>Automated ordering workflows</li>
+              <li>Dashboard for operations and KPIs</li>
+              <li>18% reduction in waste</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id= clients class="section">
+      <div class="section-header" data-anim>
+        <h2 class="section-title">What clients say</h2>
+        <p class="section-subtitle">Trusted by Individuals and Enterprises Worldwide</p>
+      </div>
+
+      <div class="testimonials" data-anim>
+        <article class="testimonial">
+          <div class="testimonial-header">
+            <div class="avatar">AC</div>
+            <div class="testimonial-author">
+              <h5>Sabine U.</h5>
+              <p>COO, Kigali FreshCart</p>
+            </div>
+          </div>
+          <p class="testimonial-text">"Bruno delivered the inventory solution quickly and with great communication. We saw immediate improvements in stock levels and cost savings."</p>
+        </article>
+
+        <article class="testimonial">
+          <div class="testimonial-header">
+            <div class="avatar">MK</div>
+            <div class="testimonial-author">
+              <h5>Djasira I.</h5>
+              <p>Managing Director, Tazerwa</p>
+            </div>
+          </div>
+          <p class="testimonial-text">"Our Tazerwa e-commerce website built by Bruno Pixels helped us increase our sales by 20%. Our clients love the interface and experience they pass through while ordering."</p>
+        </article>
+
+        <article class="testimonial">
+          <div class="testimonial-header">
+            <div class="avatar">TS</div>
+            <div class="testimonial-author">
+              <h5>Yvonne U.</h5>
+              <p>Field Manager Officer, CCOIB</p>
+            </div>
+          </div>
+          <p class="testimonial-text">"Created for me a seamless automated workflow for recording field data into excel using simple forms and database interactions. My work had never been this simplified!"</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="contact" data-anim>
+        <div class="contact-info">
+          <h2>Let's build something together</h2>
+          <p>Tell us about your project and we'll send a tailored proposal. Typical response time: 1-2 business days.</p>
+
+          <div class="info-item">
+            <strong>Location</strong>
+            <p>Kigali, Rwanda — Remote worldwide</p>
+          </div>
+
+          <div class="info-item">
+            <strong>Email</strong>
+            <p><a href="mailto:brunopixelsltd@gmail.com">brunopixelsltd@gmail.com</a></p>
+          </div>
+
+          <div class="info-item">
+            <strong>Phone number</strong>
+            <p>+250 785 570 146</p>
+          </div>
+
+          <div class="info-item">
+            <strong>Typical Projects</strong>
+            <p>$1,500 - $20,000+ depending on scope and complexity</p>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Your name *</label>
+              <input id="name" name="name" type="text" required placeholder="Jane Doe">
+            </div>
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input id="email" name="email" type="email" required placeholder="you@company.com">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="company">Company</label>
+            <input id="company" name="company" type="text" placeholder="Your company name">
+          </div>
+
+          <div class="form-group">
+            <label for="budget">Estimated budget</label>
+            <select id="budget" name="budget">
+              <option value="">Choose a range</option>
+              <option value="1500">$1,500 - $5,000</option>
+              <option value="7500">$5,000 - $20,000</option>
+              <option value="custom">$20,000+</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Project summary *</label>
+            <textarea id="message" name="message" placeholder="Describe the problem, desired outcome, timeline..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Send inquiry</button>
+          <div id="formStatus" class="form-status"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+  <div class="container footer-container">
+    <div class="footer-section footer-brand">
+      <div class="footer-logo">Bruno Pixels</div>
+      <p class="footer-text">
+        © <span id="year"></span> Bruno Pixels — All rights reserved · Kigali, Rwanda
+      </p>
+    </div>
+
+    <div class="footer-section">
+      <h4>Quick Links</h4>
+      <ul class="footer-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#projects">Works</a></li>
+        <li><a href="#clients">Clients</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h4>Get in Touch</h4>
+      <p>Email: <a href="mailto:brunopixelsltd@gmail.com">brunopixelsltd@gmail.com</a></p>
+      <p>Phone: <a href="tel:+2507XXXXXXX">+250 785 570 146</a></p>
+    </div>
+
+    <!-- Follow Us Section -->
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <p>Stay connected with us on socials:</p>
+        <div class="social-links">
+          <a href="https://wa.me/250785570146" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/brunotwagirumukiza/" target="_blank">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://github.com/bruno-fx" target="_blank">
+            <i class="fab fa-github"></i>  
+          </a>
+          <a href="https://www.instagram.com/brunopixels.ai" target="_blank">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.tiktok.com/@bruno_pixels" target="_blank">
+            <i class="fab fa-tiktok"></i>
+          </a>
+        </div>
+      </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+  <script>
+    // Intersection Observer for animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('[data-anim]').forEach(el => observer.observe(el));
+
+    // Typing effect
+    const phrases = [
+      "AI for growth",
+      "scalable web apps",
+      "automation & APIs",
+      "production systems",
+      "chatbots & assistants"
+    ];
+    let pIndex = 0, chIndex = 0;
+    const typed = document.getElementById('typed');
+
+    function typeLoop() {
+      const phrase = phrases[pIndex];
+      typed.textContent = phrase.slice(0, chIndex);
+      chIndex++;
+      if (chIndex > phrase.length) {
+        setTimeout(() => {
+          chIndex = 0;
+          pIndex = (pIndex + 1) % phrases.length;
+          typeLoop();
+        }, 2000);
+      } else {
+        setTimeout(typeLoop, 80);
+      }
+    }
+    typeLoop();
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === '#') return;
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+          const offset = 100;
+          const targetPosition = target.offsetTop - offset;
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Form handling
+    const form = document.getElementById('contactForm');
+    const status = document.getElementById('formStatus');
+
+    function validateEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      status.textContent = '';
+      
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const message = form.message.value.trim();
+
+      if (!name) {
+        status.textContent = 'Please enter your name.';
+        form.name.focus();
+        return;
+      }
+      if (!email || !validateEmail(email)) {
+        status.textContent = 'Please enter a valid email.';
+        form.email.focus();
+        return;
+      }
+      if (!message || message.length < 10) {
+        status.textContent = 'Please add a project summary (min 10 characters).';
+        form.message.focus();
+        return;
+      }
+
+      const submitBtn = form.querySelector('button[type="submit"]');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      setTimeout(() => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send inquiry';
+        status.textContent = '✓ Thanks! Your inquiry has been sent. We will reply within 1-2 business days.';
+        status.style.color = '#10b981';
+        form.reset();
+      }, 1500);
+    });
+
+    // Set year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Lazy load images
+    if ('loading' in HTMLImageElement.prototype) {
+      document.querySelectorAll('img').forEach(img => {
+        img.loading = 'lazy';
+      });
+    }
+  </script>
+</body>
+</html>
