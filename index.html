@@ -1224,30 +1224,53 @@
     </section>
 
     <section id="projects" class="section">
+      <style>
+        /* Ensure a strict 3x2 layout (hide any items after the first 6) */
+        #projects .projects {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          grid-template-rows: repeat(2, auto);
+          gap: 24px;
+          align-items: start;
+        }
+        /* Hide any project cards beyond the first 6 to keep exactly two rows */
+        #projects .projects > *:nth-child(n+7) { display: none; }
+
+        /* Keep responsive behavior from the main stylesheet (optional override removal on narrow screens) */
+        @media (max-width: 768px) {
+          /* if you still want responsive collapse, remove this block; leaving it allows collapse to single column */
+          #projects .projects {
+            grid-template-columns: 1fr;
+            grid-template-rows: none;
+          }
+          #projects .projects > *:nth-child(n+7) { display: block; } /* show all items on small screens */
+        }
+      </style>
+
       <div class="section-header" data-anim>
         <h2 class="section-title">Selected Projects</h2>
         <p class="section-subtitle">Sample of Production-ready solutions deployed for real clients</p>
       </div>
 
       <div class="projects" data-anim>
-        <article class="project-card">
+        <article class="project-card"></article>
           <img class="project-image" src="Screenshot.png" alt="Tazerwa e-market">
           <div class="project-content">
             <h4>Tazerwa e-market</h4>
             <p>E-commerce website and online marketplace providing delivery services for a variety of products in Kigali.</p>
             <div class="stack-tags">
               <span class="stack-tag">React</span>
-              <span class="stack-tag">Html</span>
+              <span class="stack-tag">HTML</span>
               <span class="stack-tag">CSS</span>
             </div>
           </div>
         </article>
 
-        <article class="project-card">
+        <article class="project-card"></article>
           <img class="project-image" src="chatbot.webp" alt="AI chatbot">
-          <div class="project-content">
+          <div class="project-content"></div>
             <h4>AI Chatbots</h4>
-            <p>We integrated AI Customer supports & assistants using LLMs into numerous companies websites and systems; automated routing and knowledge base sync.</p>
+            <p>Integrated AI customer support & assistants using LLMs; automated routing and knowledge base sync.</p>
             <div class="stack-tags">
               <span class="stack-tag">OpenAI</span>
               <span class="stack-tag">Node</span>
@@ -1255,12 +1278,12 @@
           </div>
         </article>
 
-        <article class="project-card">
+        <article class="project-card"></article>
           <img class="project-image" src="inventory.webp" alt="Smart Inventory dashboard">
-          <div class="project-content">
+          <div class="project-content"></div>
             <h4>Smart Inventory</h4>
-            <p>Inventory forecasting & dashboard for Kigali FreshCart hence reduced waste and optimized reorder.</p>
-            <div class="stack-tags">
+            <p>Inventory forecasting & dashboard for Kigali FreshCart — reduced waste and optimized reorder.</p>
+            <div class="stack-tags"></div>
               <span class="stack-tag">React</span>
               <span class="stack-tag">Python</span>
               <span class="stack-tag">ML</span>
@@ -1272,7 +1295,7 @@
           <img class="project-image" src="imi.png" alt="Isange Mama Initiative (IMI) website">
           <div class="project-content">
             <h4>Isange Mama Initiative (IMI)</h4>
-            <p>Website and platform empowering girls with education, mentorship, and access to resources. Features volunteer signups, donation integrations, events calendar, and a searchable resource library.</p>
+            <p>Platform empowering girls with education, mentorship and donations. Volunteer signups, events calendar, searchable resources.</p>
             <div class="stack-tags">
               <span class="stack-tag">React</span>
               <span class="stack-tag">Node</span>
@@ -1282,11 +1305,11 @@
           </div>
         </article>
 
-        <article class="project-card"></article>
+        <article class="project-card">
           <img class="project-image" src="freshcart.png" alt="Kigali FreshCart — Online grocery shopping platform">
           <div class="project-content">
             <h4>Kigali FreshCart</h4>
-            <p>End-to-end grocery e-commerce platform for Kigali with same-day delivery, real-time inventory, demand forecasting, and optimized route dispatch for drivers.</p>
+            <p>End-to-end grocery platform with same-day delivery, real-time inventory, demand forecasting and optimized dispatch.</p>
             <div class="stack-tags">
               <span class="stack-tag">React</span>
               <span class="stack-tag">Node</span>
@@ -1295,7 +1318,7 @@
               <span class="stack-tag">Stripe</span>
               <span class="stack-tag">ML</span>
             </div>
-            <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;">
+            <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;"></div>
               <a class="btn btn-ghost" href="https://kigali-freshcart.example.com" target="_blank" rel="noopener">Visit site</a>
               <a class="btn btn-ghost" href="#case-study-freshcart">Read case study</a>
             </div>
@@ -1306,7 +1329,7 @@
           <img class="project-image" src="dentalsight.png" alt="Dentalsight AI Mobile Application">
           <div class="project-content">
             <h4>Dentalsight AI</h4>
-            <p>Mobile application that screens the mouth cavity (teeth, gums, etc.) and predicts oral health issues using advanced AI algorithms.</p>
+            <p>Mobile app that screens the mouth cavity and predicts oral health issues using advanced AI algorithms.</p>
             <div class="stack-tags">
               <span class="stack-tag">React Native</span>
               <span class="stack-tag">AI</span>
@@ -1319,7 +1342,7 @@
           </div>
         </article>
       </div>
-    </section>
+    </section></div></article>
 
     <section id="team" class="team">
       <div class="section-header" data-anim>
