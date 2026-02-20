@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root{
-      /* Original Bruno Pixels Blue Restored */
+      /* Original Bruno Pixels Blue */
       --bg-100: #fafbfd;
       --bg-200: #f0f4f9;
       --white: #ffffff;
@@ -19,7 +19,7 @@
       --accent: #0b66ff;
       --accent-hover: #0052cc;
       --accent-light: #e6f0ff;
-      --creative-accent: #8b5cf6; /* Kept for design distinction */
+      --creative-accent: #8b5cf6;
       --creative-light: #f3e8ff;
       --glass: rgba(255,255,255,0.85);
       --shadow-sm: 0 2px 8px rgba(15,23,42,0.04);
@@ -142,7 +142,7 @@
       grid-template-columns:1.2fr 420px;
       gap:48px;
       align-items:start;
-      padding:80px 0 40px; /* Reduced bottom padding */
+      padding:80px 0 40px;
       margin-top: -50px;
     }
     .kicker{
@@ -264,9 +264,8 @@
     .section-title{ font-size:40px; font-weight:800; margin-bottom:16px; letter-spacing:-0.02em; }
     .section-subtitle{ font-size:18px; color:var(--muted); max-width:60ch; margin:0 auto; }
 
-    /* Capabilities (Reduced Top Margin as requested) */
+    /* Capabilities */
     #capabilities { margin-top: 40px; }
-
     .services-split{ display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 32px; }
     .service-pillar{ background: white; border-radius: var(--radius-xl); padding: 40px; box-shadow: var(--shadow-sm); border: 1px solid rgba(15,23,42,0.04); transition: all var(--transition); }
     .service-pillar:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); border-color: var(--accent-light); }
@@ -281,7 +280,6 @@
 
     @media (max-width: 768px) { .services-split { grid-template-columns: 1fr; } }
 
-    /* Detailed Service Cards Grid */
     .detailed-services{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
     .service-card{ background:white; padding:28px; border-radius:var(--radius-lg); border:1px solid rgba(15,23,42,0.04); box-shadow:var(--shadow-sm); transition:all var(--transition); cursor:pointer; }
     .service-card:hover{ transform:translateY(-4px); box-shadow:var(--shadow-lg); border-color:var(--accent-light); }
@@ -293,23 +291,82 @@
 
     @media (max-width: 768px) { .detailed-services { grid-template-columns: 1fr; } }
 
-    /* Projects Grid */
+    /* Projects Grid - UPDATED FOR CLICKABILITY */
     .projects{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
-    .project-card{ background:white; border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-sm); border:1px solid rgba(15,23,42,0.04); transition:all var(--transition); display: flex; flex-direction: column; }
-    .project-card:hover{ transform:translateY(-6px); box-shadow:var(--shadow-lg); }
+    
+    /* Project Card is now an anchor tag */
+    .project-card{ 
+      background:white; 
+      border-radius:var(--radius-lg); 
+      overflow:hidden; 
+      box-shadow:var(--shadow-sm); 
+      border:1px solid rgba(15,23,42,0.04); 
+      transition:all var(--transition); 
+      display: flex; 
+      flex-direction: column; 
+      text-decoration: none; /* Remove link underline */
+      color: inherit;
+    }
+    
+    .project-card:hover{ 
+      transform:translateY(-6px); 
+      box-shadow:var(--shadow-lg); 
+      border-color: var(--accent-light);
+    }
+
+    .project-card:hover h4 {
+      color: var(--accent); /* Turn title blue on hover */
+    }
+
+    .project-card:hover .external-icon {
+      color: var(--accent);
+      transform: translate(2px, -2px); /* Little pop animation for the arrow */
+    }
+
     .project-image{ width:100%; height:200px; object-fit:cover; display:block; background: var(--bg-200); position: relative; }
-    /* Fallback icons inside image container in case image breaks */
     .img-fallback { position: absolute; top:0; left:0; width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-size: 40px; color: #cbd5e1; z-index: 0; }
-    .project-image { position: relative; z-index: 1; }
+    .project-image img { position: relative; z-index: 1; }
     
     .project-content{ padding:24px; flex-grow: 1; display: flex; flex-direction: column; }
     .project-type { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
     .type-dev { color: var(--accent); }
     .type-creative { color: var(--creative-accent); }
-    .project-content h4{ font-size:20px; font-weight:800; margin-bottom:12px; }
+    
+    .project-content h4{ 
+      font-size:20px; 
+      font-weight:800; 
+      margin-bottom:12px; 
+      display: flex; 
+      align-items: center;
+      transition: color var(--transition);
+    }
+    
+    .external-icon {
+      font-size: 14px;
+      margin-left: 8px;
+      color: var(--muted);
+      transition: all var(--transition);
+    }
+
     .project-content p{ font-size:14px; color:var(--muted); margin-bottom:20px; line-height:1.6; flex-grow: 1; }
     .stack-tags{ display:flex; gap:6px; flex-wrap:wrap; }
     .stack-tag{ padding:4px 10px; background:var(--bg-100); border-radius:var(--radius-sm); font-size:12px; font-weight:600; color:var(--muted); border: 1px solid var(--bg-200); }
+
+    /* View More Container */
+    .view-more-container {
+      text-align: center;
+      margin-top: 48px;
+      padding: 32px;
+      background: var(--bg-100);
+      border-radius: var(--radius-lg);
+      border: 1px dashed var(--muted);
+    }
+    .view-more-text {
+      font-size: 16px;
+      color: var(--muted);
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
 
     @media (max-width:1024px){ .projects{ grid-template-columns:repeat(2,1fr); } }
     @media (max-width:768px){ .projects{ grid-template-columns:1fr; } }
@@ -546,99 +603,111 @@
     <section id="work" class="section">
       <div class="section-header" data-anim>
         <h2 class="section-title">Selected Work</h2>
-        <p class="section-subtitle">A showcase of scalable platforms built, corporate brands established, and stories animated.</p>
+        <p class="section-subtitle">A showcase of scalable platforms built, corporate brands established, and stories animated. Click any project to view details.</p>
       </div>
 
       <div class="projects" data-anim>
-        <article class="project-card">
+        <a href="https://referax.com" target="_blank" rel="noopener noreferrer" class="project-card">
           <div class="project-image">
             <div class="img-fallback"><i class="fa-solid fa-globe-africa"></i></div>
             <img src="referax-placeholder.png" alt="ReferaX Platform" style="width:100%; height:100%; object-fit:cover;" onerror="this.style.display='none'">
           </div>
           <div class="project-content">
             <span class="project-type type-dev">SaaS / Platform Dev</span>
-            <h4>ReferaX Platform</h4>
+            <h4>ReferaX Platform <i class="fa-solid fa-arrow-up-right-from-square external-icon"></i></h4>
             <p>A scalable referral marketplace platform designed to connect businesses with affiliates. Built with the African market in mind, featuring robust tracking, intuitive UI/UX, and complex financial calculation logic.</p>
             <div class="stack-tags">
               <span class="stack-tag">React</span><span class="stack-tag">Node.js</span><span class="stack-tag">FinTech</span>
             </div>
           </div>
-        </article>
+        </a>
 
-        <article class="project-card">
+        <a href="https://drive.google.com/file/d/1Js70v--lSHano33WxMW-f_fnPa14TA38/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="project-card">
           <div class="project-image">
             <div class="img-fallback"><i class="fa-solid fa-palette"></i></div>
             <img src="bkreative.png" alt="BKreative Identity" style="width:100%; height:100%; object-fit:cover;" onerror="this.style.display='none'">
           </div>
           <div class="project-content">
             <span class="project-type type-creative">Brand Identity</span>
-            <h4>BKreative Logo & Identity</h4>
-            <p>Complete visual identity and logo design crafted for Bank of Kigali's 'BKreative' initiative. The project established a modern, trustworthy, and artistic footprint for the brand.</p>
+            <h4>BKreative Logo & Identity <i class="fa-solid fa-arrow-up-right-from-square external-icon"></i></h4>
+            <p>A sample of the complete visual identity and logo design crafted for Bank of Kigali's 'BKreative' initiative. The project established a modern, trustworthy, and artistic footprint for the brand.</p>
             <div class="stack-tags">
-              <span class="stack-tag">Illustrator</span><span class="stack-tag">Brand Strategy</span>
+              <span class="stack-tag">Photoshop</span><span class="stack-tag">Brand Strategy</span>
             </div>
           </div>
-        </article>
+        </a>
 
-        <article class="project-card">
+        <a href="https://drive.google.com/file/d/10b4xIpz5vp0htVJdBzDPwghOWXoZi7jG/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="project-card">
           <div class="project-image">
             <div class="img-fallback"><i class="fa-solid fa-heart-pulse"></i></div>
-            <img src="health-animation.png" alt="Health Data Animation" style="width:100%; height:100%; object-fit:cover;" onerror="this.style.display='none'">
+            <img src="animation.png" alt="Health Data Animation" style="width:100%; height:100%; object-fit:cover;" onerror="this.style.display='none'">
           </div>
           <div class="project-content">
             <span class="project-type type-creative">Motion Graphics</span>
-            <h4>Health Data Visualization</h4>
-            <p>A series of short animated explainer videos created to visually communicate complex data and service delivery metrics for health workers operating across multiple services in Rwanda.</p>
+            <h4>Advert Animation <i class="fa-solid fa-arrow-up-right-from-square external-icon"></i></h4>
+            <p>A series of short animated explainer videos created to visually communicate how Kigali FreshCart operates using it's website in Rwanda.</p>
             <div class="stack-tags">
               <span class="stack-tag">After Effects</span><span class="stack-tag">Animation</span>
             </div>
           </div>
-        </article>
+        </a>
 
-        <article class="project-card">
+        <a href="https://kigalifreshcart.com" target="_blank" rel="noopener noreferrer" class="project-card">
           <div class="project-image">
             <div class="img-fallback"><i class="fa-solid fa-cart-shopping"></i></div>
             <img src="freshcart.png" alt="Kigali FreshCart" style="width:100%; height:100%; object-fit:cover;" onerror="this.style.display='none'">
           </div>
           <div class="project-content">
-            <span class="project-type type-dev">AI & Logistics Platform</span>
-            <h4>Kigali FreshCart</h4>
+            <span class="project-type type-dev">AI & Delivery Platform</span>
+            <h4>Kigali FreshCart <i class="fa-solid fa-arrow-up-right-from-square external-icon"></i></h4>
             <p>End-to-end grocery e-commerce platform with same-day delivery. Features real-time inventory tracking, machine learning for demand forecasting, and optimized route dispatch for drivers.</p>
             <div class="stack-tags">
               <span class="stack-tag">React</span><span class="stack-tag">Python (ML)</span><span class="stack-tag">PostgreSQL</span>
             </div>
           </div>
-        </article>
+        </a>
 
-        <article class="project-card">
+        <a href="https://tazerwa.com" target="_blank" rel="noopener noreferrer" class="project-card">
           <div class="project-image">
             <div class="img-fallback"><i class="fa-solid fa-store"></i></div>
             <img src="Screenshot.png" alt="Tazerwa e-market" style="width:100%; height:100%; object-fit:cover;" onerror="this.style.display='none'">
           </div>
           <div class="project-content">
             <span class="project-type type-dev">E-Commerce Web</span>
-            <h4>Tazerwa E-Market</h4>
+            <h4>Tazerwa E-Market <i class="fa-solid fa-arrow-up-right-from-square external-icon"></i></h4>
             <p>Dynamic e-commerce website and online marketplace providing seamless delivery services and product discovery for a variety of retail vendors across Kigali.</p>
             <div class="stack-tags">
               <span class="stack-tag">React</span><span class="stack-tag">HTML/CSS</span><span class="stack-tag">Payments</span>
             </div>
           </div>
-        </article>
+        </a>
 
-        <article class="project-card">
+        <a href="YOUR_LINK_HERE" target="_blank" rel="noopener noreferrer" class="project-card">
           <div class="project-image">
             <div class="img-fallback"><i class="fa-solid fa-comments"></i></div>
             <img src="chatbot.webp" alt="AI Chatbot integrations" style="width:100%; height:100%; object-fit:cover;" onerror="this.style.display='none'">
           </div>
           <div class="project-content">
             <span class="project-type type-dev">AI Automations</span>
-            <h4>Corporate AI Assistants</h4>
+            <h4>Corporate AI Assistants <i class="fa-solid fa-arrow-up-right-from-square external-icon"></i></h4>
             <p>Integration of conversational AI customer support agents utilizing custom LLMs into numerous company websites. Features automated query routing and knowledge base synchronization.</p>
             <div class="stack-tags">
               <span class="stack-tag">OpenAI</span><span class="stack-tag">Node</span><span class="stack-tag">Vector DBs</span>
             </div>
           </div>
-        </article>
+        </a>
+      </div>
+
+      <div class="view-more-container" data-anim>
+        <p class="view-more-text">...and many other internal tools, brand identities, automated scripts, and client projects.</p>
+        <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+          <a href="https://drive.google.com/file/d/1MbF0ynawOzk6TKvidp76qK82euuND5jX/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+            Explore Code on GitHub <i class="fa-brands fa-github" style="margin-left: 8px;"></i>
+          </a>
+          <a href="https://drive.google.com/file/d/1N7OT1_fGWEjhyqKmGxO6bdEasG1FD7Bm/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="border: 1px solid var(--bg-200);">
+            View Design Portfolio <i class="fa-brands fa-google-drive" style="margin-left: 8px;"></i>
+          </a>
+        </div>
       </div>
     </section>
 
